@@ -1,48 +1,72 @@
 import React from 'react';
-import './styles.css';
+import classNames from 'classnames';
+import styles from './Button.module.css';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     /**
-     * Is this the principal call to action on the page?
+     * Button type
      */
-    primary?: boolean;
+    type?: 'button' | 'submit' | 'reset';
     /**
-     * What background color to use
+     * Button variant
      */
-    backgroundColor?: string;
+    variant?: 'primary' | 'secondary';
     /**
-     * How large should the button be?
+     * Button size
      */
     size?: 'small' | 'medium' | 'large';
     /**
-     * Button contents
+     * Button disabled
      */
-    label: string;
+    disabled?: boolean;
+    /**
+     * Button className
+     *
+     * Note: You can add your own class for this element.
+     *
+     */
+    className?: string;
     /**
      * Optional click handler
      */
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent) => void;
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({
-                           primary = false,
-                           size = 'medium',
-                           backgroundColor,
-                           label,
-                           ...props
-                       }: ButtonProps) => {
-    const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+const Button: React.FC<ButtonProps> = ({
+                                           children,
+                                           type = 'button',
+                                           variant = 'primary',
+                                           size = 'medium',
+                                           disabled,
+                                           className,
+                                           onClick,
+                                           ...rest
+                                       }) => {
+
+    const buttonClassName = classNames(
+        styles.button,
+        styles[`button--${variant}`],
+        styles[`button--${size}`],
+        className
+    );
+
+    const handleClick = (event: React.MouseEvent) => {
+        if (onClick) {
+            onClick(event);
+        }
+    };
+
     return (
         <button
-            type="button"
-            className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-            style={{backgroundColor}}
-            {...props}
+            type={type}
+            className={buttonClassName}
+            disabled={disabled}
+            onClick={handleClick}
+            {...rest}
         >
-            {label}
+            {children}
         </button>
     );
 };
+
+export default Button;
