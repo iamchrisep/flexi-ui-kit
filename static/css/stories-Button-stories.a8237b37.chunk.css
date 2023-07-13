@@ -1,0 +1,55 @@
+:root {
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-transparent: #FFFFFF00;
+
+    --color-primary: #007bff;
+    --color-secondary: #6c757d;
+
+
+}
+
+.Button_button__wiIYs {
+    font-weight: 700;
+    border: 0;
+    border-radius: 3em;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+}
+
+.Button_button--primary__tBqXm {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+}
+
+.Button_button--secondary__tO0TI {
+    color: var(--color-black);
+    background-color: var(--color-transparent);
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--color-secondary);
+}
+
+.Button_button--small__j007x {
+    font-size: 12px;
+    padding: 10px 16px;
+}
+
+.Button_button--medium__U-P2Y {
+    font-size: 14px;
+    padding: 11px 20px;
+}
+
+.Button_button--large__mOugL {
+    font-size: 16px;
+    padding: 12px 24px;
+}
+
+.Button_button__wiIYs:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/*# sourceMappingURL=stories-Button-stories.a8237b37.chunk.css.map*/
